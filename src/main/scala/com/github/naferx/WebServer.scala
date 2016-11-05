@@ -2,19 +2,14 @@ package com.github.naferx
 
 
 import akka.actor.ActorSystem
-import akka.event.slf4j.Logger
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.model._
 import akka.http.scaladsl.server.Directives._
 import akka.stream.ActorMaterializer
 import com.typesafe.config.ConfigFactory
 
-import scala.io.StdIn
-import scala.util.{Failure, Success}
 
-object WebServer {
-  def main(args: Array[String]) {
-
+object WebServer extends App {
     implicit val system = ActorSystem("HttpServer")
     val log = system.log
     implicit val materializer = ActorMaterializer()
@@ -33,19 +28,7 @@ object WebServer {
         }
       }
 
-    val bindingFuture = Http().bindAndHandle(route, serverConfig.host, serverConfig.port)
+    val bindingFuture = Http().bindAndHandle(route, serverConfig.interface, serverConfig.port)
 
-    log.info(s"Server online at http://${serverConfig.host}:${serverConfig.port}/\nPress RETURN to stop...")
-
-    StdIn.readLine() // let it run until user presses return
-    bindingFuture
-      .flatMap(_.unbind())  // trigger unbinding from the port
-      .onComplete {
-      case Success(o) =>
-        system.terminate()
-      case Failure(failure) =>
-        log.error(s"Failed to bind to {}:{}! Error: {}", serverConfig.host, serverConfig.port, failure.getMessage)
-        system.terminate()
-    }
-  }
+    log.info(s"Server online at http://${serverConfig.interface}:${serverConfig.port}/\nPress RETURN to stop...")
 }
