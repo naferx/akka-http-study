@@ -9,7 +9,7 @@ import akka.stream.ActorMaterializer
 import com.typesafe.config.ConfigFactory
 
 
-object WebServer extends App {
+object WebServer extends App with ClientsApi {
     implicit val system = ActorSystem("HttpServer")
     val log = system.log
     implicit val materializer = ActorMaterializer()
@@ -26,7 +26,8 @@ object WebServer extends App {
             complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, "<h1>Say hello to akka-http</h1>"))
           }
         }
-      }
+      } ~
+      clientsRoutes
 
     val bindingFuture = Http().bindAndHandle(route, serverConfig.interface, serverConfig.port)
 
