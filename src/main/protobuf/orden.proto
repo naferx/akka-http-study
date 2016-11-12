@@ -1,0 +1,11 @@
+
+syntax = "proto3";
+
+option optimize_for = SPEED;
+
+package com.github.naferx.request;
+
+message ProductoMessage {
+    int32 id = 1;
+    string nombre = 2;
+}
