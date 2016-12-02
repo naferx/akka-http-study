@@ -28,6 +28,7 @@ object WebServer extends App with ClientsApi with ScalaPBMarshalling  {
   implicit val readerProducto = jsonFormat2(Producto)
   implicit val writerCliente = jsonFormat2(Cliente)
 
+  implicit val productoProto = scalaPBFromRequestUnmarshaller(ProductoMessage)
 
   val route =
     path("hello") {
