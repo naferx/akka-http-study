@@ -3,18 +3,17 @@ import com.trueaccord.scalapb.{ ScalaPbPlugin => PB }
 name := "akka-http-study"
 
 version := "1.0.0"
-
-
 scalaVersion := "2.11.8"
 
-val akkaVersion = "2.4.12"
+val akkaVersion = "2.4.17"
+val akkaHttpVersion = "10.0.5"
 
 dockerExposedPorts := Seq(8082)
 enablePlugins(JavaAppPackaging)
 
 libraryDependencies ++= Seq(
-    "com.typesafe.akka"         %%    "akka-http"                  %    "3.0.0-RC1",
-    "com.typesafe.akka"         %%    "akka-http-spray-json-experimental"       %   "2.4.11",
+    "com.typesafe.akka"         %%    "akka-http"                  %    akkaHttpVersion,
+    "com.typesafe.akka"         %%    "akka-http-spray-json"       %   akkaHttpVersion,
     "com.typesafe.akka"         %%    "akka-slf4j"                 %    akkaVersion,
     "ch.qos.logback"            %     "logback-classic"            %    "1.1.7",
 
