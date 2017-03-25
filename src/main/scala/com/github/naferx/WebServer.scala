@@ -26,7 +26,7 @@ object WebServer extends App with ClientsApi with ScalaPBMarshalling {
   implicit val executionContext = system.dispatcher
 
   val applicationConf = ConfigFactory.load()
-  val serverConfig = new ServerConfig(applicationConf)
+  val serverConfig = new ServerSettings(applicationConf)
 
   implicit val readerProducto = jsonFormat2(Producto)
   implicit val writerCliente = jsonFormat2(Cliente)
