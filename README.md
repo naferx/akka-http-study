@@ -12,4 +12,6 @@ Links
 https://github.com/DanielaSfregola/akka-tutorials
 https://sachabarbs.wordpress.com/2016/11/16/akka-http/
 http://alexkuang.com/blog/2016/04/26/writing-an-api-client-with-akka-http/
+
 https://gist.github.com/dcaoyuan/f2f70bed35c647a4d9a43dfdbcb6dbb8
+https://gist.github.com/adamw/bd4f5aafa9d01abbc883
