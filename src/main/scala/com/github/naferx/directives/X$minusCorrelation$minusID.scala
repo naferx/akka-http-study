@@ -12,6 +12,6 @@ final class `X-Correlation-ID`(id: String) extends ModeledCustomHeader[`X-Correl
 }
 
 object `X-Correlation-ID` extends ModeledCustomHeaderCompanion[`X-Correlation-ID`] {
-  override val name = "X-Request-Id"
+  override val name = "X-Correlation-ID"
   override def parse(value: String) = Try(new `X-Correlation-ID`(value))
 }
