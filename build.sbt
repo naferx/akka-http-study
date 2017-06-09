@@ -6,7 +6,7 @@ version := "1.0.0"
 scalaVersion := "2.11.8"
 
 val akkaVersion = "2.4.17"
-val akkaHttpVersion = "10.0.6"
+val akkaHttpVersion = "10.0.7"
 
 dockerExposedPorts := Seq(8082)
 enablePlugins(JavaAppPackaging)
